@@ -1,6 +1,19 @@
-const GOOLe_Map_KEY = "AIzaSyBlZ-mYPwuIKIGTiJWR_wFOh_tTUhTFFTU";
+const GOOLE_MAP_KEY = "AIzaSyBlZ-mYPwuIKIGTiJWR_wFOh_tTUhTFFTU";
 
 export function getMapPreview(lat, lng) {
-  const imagePreviewUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${lat},${lng}&zoom=14&size=400x200&maptype=roadmap&markers=color:red%7Clabel:S%7C${lat},${lng}&key=${GOOLe_Map_KEY}`;
+  const imagePreviewUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${lat},${lng}&zoom=14&size=400x200&maptype=roadmap&markers=color:red%7Clabel:S%7C${lat},${lng}&key=${GOOLE_MAP_KEY}`;
   return imagePreviewUrl;
+}
+
+export async function getAddress(lat, lng) {
+  const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${GOOLE_MAP_KEY}`;
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch address!");
+  }
+
+  const data = await response.json();
+  const address = data.results[0].formatted_address;
+  return address;
 }
