@@ -1,4 +1,3 @@
-import { View, Text, StyleSheet } from "react-native";
 import PlaceForm from "../components/Places/PlaceForm";
 
 function AddPlace({ navigation }) {
@@ -10,5 +9,3 @@ function AddPlace({ navigation }) {
 }
 
 export default AddPlace;
-
-const styles = StyleSheet.create({});
