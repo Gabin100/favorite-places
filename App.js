@@ -11,6 +11,7 @@ import IconButtons from "./components/Ui/IconButtons";
 import { Colors } from "./constants/colors";
 import { initAsync } from "./util/database";
 import { View } from "react-native";
+import PlaceDetails from "./screens/PlaceDetails";
 
 SplashScreen.preventAutoHideAsync();
 const Stack = createNativeStackNavigator();
@@ -77,6 +78,13 @@ export default function App() {
             }}
           />
           <Stack.Screen name='Map' component={Map} />
+          <Stack.Screen
+            name='PlaceDetails'
+            component={PlaceDetails}
+            options={{
+              title: "Loading Place...",
+            }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </View>
